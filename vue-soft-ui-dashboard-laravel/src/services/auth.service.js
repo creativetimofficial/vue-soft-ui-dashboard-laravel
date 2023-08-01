@@ -12,8 +12,11 @@ export default {
   },
 
   async logout() {
-    await axios.post(API_URL + "logout", {}, { headers: authHeader() });
-    localStorage.removeItem("userF");
+    try {
+      await axios.post(API_URL + "logout", {}, { headers: authHeader() });
+    } finally {
+      localStorage.removeItem("userF");
+    }
   },
 
   async register(user) {

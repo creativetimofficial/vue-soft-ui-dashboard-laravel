@@ -13,8 +13,11 @@ export const auth = {
     },
 
     async logout({ commit }) {
-      await authService.logout();
-      commit("logMeOut");
+      try {
+        await authService.logout();
+      } finally {
+        commit("logMeOut");
+      }
     },
 
     async register({ commit }, userData) {

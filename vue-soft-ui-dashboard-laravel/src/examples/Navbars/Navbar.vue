@@ -243,8 +243,11 @@ export default {
     },
 
     async logoutUser() {
-      await this.$store.dispatch("auth/logout");
-      this.$router.push("/login");
+      try {
+        await this.$store.dispatch("auth/logout");
+      } finally {
+        this.$router.push("/login");
+      }
     },
   },
   components: {

@@ -170,8 +170,16 @@ export default {
     },
   },
   async created() {
-    await this.$store.dispatch("profile/getProfile");
-    this.profileChange = { ...this.profile };
+    try {
+      await this.$store.dispatch("profile/getProfile");
+      this.profileChange = { ...this.profile };
+    } catch (error) {
+      try {
+        await this.$store.dispatch("auth/logout");
+      } finally {
+        this.$router.push("/login");
+      }
+    }
   },
   methods: {
     async handlePassChange() {
