@@ -8,3 +8,7 @@
 - Register
 - Reset Password
 - User Profile
+
+## [1.1.0]
+
+### Update to Laravel 11.x
